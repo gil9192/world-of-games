@@ -3,16 +3,14 @@ pipeline {
         label 'jnodes'
     }
 
-    stages {
-        stage('Checkout') {
-            steps {
-                echo 'Hello World'
-            }
+    environment {
+            VERSION = sh(script: 'git describe --tags --abbrev=0', returnStdout: true).trim()
         }
 
+    stages {
         stage('Build') {
             steps {
-                echo 'Hello World'
+                sh 'Hello World'
             }
         }
 

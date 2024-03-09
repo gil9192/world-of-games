@@ -30,6 +30,7 @@ pipeline {
                 // Prepare the testing environment.
                 script {
                     sh """ 
+                    #!/bin/bash
                     python3 -m venv .venv
                     source .venv/bin/activate
                     pip install -r requirements.txt
@@ -37,7 +38,11 @@ pipeline {
                 }
                 // Run the tests.
                 script {
-                    sh "python3 tests/e2e.py"
+                    sh """
+                    #!/bin/bash
+                    source .venv/bin/activate
+                    python3 tests/e2e.py
+                    """
                 }
             }
         }

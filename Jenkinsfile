@@ -1,18 +1,19 @@
 pipeline {
     agent {
-        label 'jnodes'
+        label "jnodes"
     }
 
-    // environment {
-    //         VERSION = sh(script: 'git describe --tags --abbrev=0', returnStdout: true).trim()
-    //         IMAGE_NAME = "wog1312:${VERSION}"
-    //     }
+    environment {
+            // VERSION = sh(script: 'git describe --tags --abbrev=0', returnStdout: true).trim()
+            // IMAGE_NAME = "scoreserver-wog1312:${VERSION}"
+            DOCKER_IMAGE_NAME = "scoreserver-wog1312"
+    }
 
     stages {
         stage('Build') {
             steps {
                 script {
-                    sh "docker build -t scoreserver-wog1312 ."
+                    sh 'docker build -t scoreserver-wog1312 .'
                 }
             }
         }
@@ -20,7 +21,7 @@ pipeline {
         stage('Run') {
             steps {
                 script {
-                    sh "docker-compose up -d"
+                    sh 'docker-compose up -d'
                 }
             }
         }
@@ -43,9 +44,14 @@ pipeline {
             }
         }
 
-        stage('Deply') {
+        stage('Deploy') {
             steps {
-                echo 'Hello World'
+                script {
+                    withCredentials([string(credentialsId: '509c311a-29a4-4653-b394-ff3f9f5bdd51', variable: 'TOKEN'), string(credentialsId: '8c732d85-e233-43f1-8c7b-2081dad5e5ad', variable: 'USER')]) {
+                        sh "docker login -u ${USER} -p ${TOKEN}"
+                        sh "docker push ${USER}/${DOCKER_IMAGE_NAME}"
+                    }
+                }
             }
         }
     }

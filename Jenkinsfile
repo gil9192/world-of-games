@@ -49,6 +49,10 @@ pipeline {
                 script {
                     withCredentials([string(credentialsId: '509c311a-29a4-4653-b394-ff3f9f5bdd51', variable: 'TOKEN'), string(credentialsId: '8c732d85-e233-43f1-8c7b-2081dad5e5ad', variable: 'USER')]) {
                         sh "docker login -u ${USER} -p ${TOKEN}"
+                    }
+                }
+                script {
+                    withCredentials([string(credentialsId: '509c311a-29a4-4653-b394-ff3f9f5bdd51', variable: 'TOKEN'), string(credentialsId: '8c732d85-e233-43f1-8c7b-2081dad5e5ad', variable: 'USER')]) {
                         sh "docker push ${USER}/${DOCKER_IMAGE_NAME}"
                     }
                 }

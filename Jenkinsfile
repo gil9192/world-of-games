@@ -27,6 +27,15 @@ pipeline {
 
         stage('Test') {
             steps {
+                // Prepare the testing environment.
+                script {
+                    sh """ 
+                    python3 -m venv .venv
+                    source .venv/bin/activate
+                    pip install -r requirements.txt
+                    """
+                }
+                // Run the tests.
                 script {
                     sh "python3 tests/e2e.py"
                 }

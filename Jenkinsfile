@@ -12,7 +12,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    sh "docker build -t scoreserver-wog1312:latest ."
+                    sh "docker build -t scoreserver-wog1312 ."
                 }
             }
         }

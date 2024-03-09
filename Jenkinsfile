@@ -3,26 +3,33 @@ pipeline {
         label 'jnodes'
     }
 
-    environment {
-            VERSION = sh(script: 'git describe --tags --abbrev=0', returnStdout: true).trim()
-        }
+    // environment {
+    //         VERSION = sh(script: 'git describe --tags --abbrev=0', returnStdout: true).trim()
+    //         IMAGE_NAME = "wog1312:${VERSION}"
+    //     }
 
     stages {
         stage('Build') {
             steps {
-                echo "Building: ${VERSION}"
+                script {
+                    sh "docker build -t scoreserver-wog1312:latest ."
+                }
             }
         }
 
         stage('Run') {
             steps {
-                echo 'Hello World'
+                script {
+                    sh "docker-compose up -d"
+                }
             }
         }
 
         stage('Test') {
             steps {
-                echo 'Hello World'
+                script {
+                    sh "python3 tests/e2e.py"
+                }
             }
         }
 

@@ -25,7 +25,7 @@ pipeline {
         }
 
         stage("Test") {
-            stGeps {
+            steps {
                 script {
                     sh """ 
                     python3 -m venv .venv

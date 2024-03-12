@@ -4,8 +4,6 @@ pipeline {
     }
 
     environment {
-            // VERSION = sh(script: "git describe --tags --abbrev=0", returnStdout: true).trim()
-            // IMAGE_NAME = "scoreserver-wog1312:${VERSION}"
             DOCKER_IMAGE_NAME = "scoreserver-wog1312"
     }
 
@@ -21,13 +19,13 @@ pipeline {
         stage("Run") {
             steps {
                 script {
-                    sh 'docker-compose up -d'
+                    sh "docker-compose up -d"
                 }
             }
         }
 
         stage("Test") {
-            steps {
+            stGeps {
                 script {
                     sh """ 
                     python3 -m venv .venv
@@ -35,7 +33,7 @@ pipeline {
                     pip install -r requirements.txt
                     """
                 }
-                
+
                 script {
                     sh """
                     source .venv/bin/activate

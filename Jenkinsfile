@@ -11,7 +11,7 @@ pipeline {
         stage("Build") {
             steps {
                 script {
-                    sh "docker build -t scoreserver-wog1312 ."
+                    sh "docker build -t ${DOCKER_IMAGE_NAME} ."
                 }
             }
         }

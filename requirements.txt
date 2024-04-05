@@ -1,3 +1,4 @@
 CurrencyConverter==0.17.16
 webdriver-manager==4.0.1
 selenium==4.18.1
+SQLAlchemy==2.0.29

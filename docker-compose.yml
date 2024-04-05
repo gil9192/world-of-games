@@ -8,6 +8,17 @@ services:
     ports:
       - 8777:8777
     volumes:
-    - ${PWD}/Scores.txt:/app/Scores.txt
+      - ${PWD}/Scores.txt:/app/Scores.txt
+
+  postgres:
+    image: postgres:16.2-bookworm
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: changeme
+      POSTGRES_DB: wogdb
+    ports:
+      - 5432:5432
+    volumes:
+      - ${PWD}/data:/var/lib/postgresql/data
 
 ...

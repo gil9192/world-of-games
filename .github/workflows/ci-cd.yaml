@@ -33,6 +33,6 @@ jobs:
 
       - name: "Deploy Docker Image to dockerhub.com"
         run: |
-          docker login -u ${{ secrets.DOCKERHUB_USER}} -p ${{ secrets.DOCKERHUB_TOKEN }}"
-          docker tag world-of-games-1312_wog1312 ${{ secrets.DOCKERHUB_USER}}/${DOCKER_IMAGE_NAME}
-          docker push ${{ secrets.DOCKERHUB_USER}/${DOCKER_IMAGE_NAME}
+          docker login -u ${{ secrets.DOCKERHUB_USER }} -p ${{ secrets.DOCKERHUB_TOKEN }}"
+          docker tag ${DOCKER_IMAGE_NAME} ${{ secrets.DOCKERHUB_USER }}/${DOCKER_IMAGE_NAME}
+          docker push ${{ secrets.DOCKERHUB_USER }}/${DOCKER_IMAGE_NAME}

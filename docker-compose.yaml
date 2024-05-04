@@ -2,6 +2,7 @@ version: '3.5'
 
 services:
   wog1312:
+    image: world-of-games1312
     build: 
       context: .
       dockerfile: Dockerfile

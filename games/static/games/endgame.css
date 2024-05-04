@@ -1,0 +1,91 @@
+.round {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 3rem;
+    border: 3rem;
+    max-width: 50%; /* Half width of the screen */
+    background-color: #eeeeee;
+    border-radius: 10px; /* Rounded border */
+    box-shadow: 0 0 1rem rgba(95, 57, 131, 0.562);
+}
+
+.round h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+.round form {
+    display: flex;
+    flex-direction: column;
+}
+
+.round label {
+    margin-bottom: 5px;
+    color: purple;
+}
+
+.round input[type="text"],
+.round input[type="password"],
+.round button {
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border: 1rem solid #ccc;
+    border-radius: 2rem;
+    font-size: 16px;
+}
+
+.round button {
+    background-color: #6a0dad;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.round .win, .round .loose {
+    text-align: center;
+    color: #ffffff;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.round .win h1, .round .loose h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.round .loose h1 {
+    color: #a30505; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.round .win h1 {
+    color: #00c954; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+
+
+.round .replay {
+    text-align: center;
+}
+
+.round .roundend-link {
+    display: inline-block;
+    margin-top: 10px; /* Increase the top margin */
+    padding: 10px 20px; /* Add padding to create a clickable area */
+    color: #fff;
+    text-decoration: none;
+    background-color: #6a0dad;
+    border-radius: 10px; /* Rounded border */
+    transition: background-color 0.3s;
+}
+
+.round .roundend-link:hover {
+    background-color: #7b1fa2; /* Darker shade of purple on hover */
+    color: #ffd700;
+}

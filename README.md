@@ -1,24 +1,34 @@
-# v1.4
+# World-of-Games-1312
 
-# World of Games 1312
-A collection of mini-Python games! They've been made to give loads of fun! 
-Jump right in and enjoy all the different games waiting for you in the
-World of Games!
+This project is web app version for world of games.
 
-## The Guess Game
-Guess Game starts by picking a secret number randomly 
-between 0 and the "difficulty". 
-Then, you have to guess what that secret number is by typing in your guess!
+## Local Setup
 
-## The Currency Roulette Game
-Currency Roulette Game! It uses a special magic to find out how much
-one U.S. dollar is worth in Israeli Shekels (ILS). 
-Then, it picks a secret number between 1 and 100, and you gotta guess
-how much that is in U.S. dollars converted to Israeli Shekels!
-How close you get depends on how hard you want the game to be!
+In order to setup the environment.
 
-## The Memory Game
-The Memory Game is all about testing how good your memory is! 
-First, it shows you a bunch of random numbers really quickly, like whoosh! 
-Then, it's your turn to try and remember what those numbers were and type them!
-Can you remember them all? Let's find out!
+```
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+## Provide DB Credentials
+The ".env" file contains different environment variables, please make sure
+define DB password and connection string if needed.
+https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+
+## Local Run
+
+In order to run locally.
+
+```
+python3 manage.py migrate
+python3 manage.py runserver 0.0.0.0:8777
+```
+
+## Run as Docker Container
+
+```
+docker-compose build
+docker-compose up -d
+```

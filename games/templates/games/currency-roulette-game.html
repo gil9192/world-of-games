@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Currency Roulette Game
+{% endblock title %}
+
+{% block css_file %}
+<link rel="stylesheet" href="{% static "games/currency-roulette-game.css" %}">
+{% endblock css_file %}
+
+{% block content %}
+<div class="guess-users-choice">
+    <h1>Guess The Value of {{ usd_amount }}($) in (₪)</h1>
+    <form action="/games/roulette/" method="POST">
+        {% csrf_token %}
+        <label for="guess">Your Guess:</label>
+        <input type="number" id="guess" name="guess" step="any" min="0" value="0"/>
+        <button>Try</button>
+    </form>
+</div>
+{% endblock content %}
+
+{% block js_file %}
+<script src="{% static "games/js/memory-game.js" %}"></script>
+{% endblock js_file %}

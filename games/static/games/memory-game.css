@@ -1,0 +1,77 @@
+.game-box {
+    margin: 2rem auto;
+    max-width: 100%;
+    text-align: center;
+}
+
+.game-box h2.card {
+    color: #6a0dad;
+}
+
+.memory-cards {
+    margin-bottom: 20px;
+}
+
+.card-list {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    padding: 0;
+}
+
+.card-list li {
+    margin: 2rem;
+    border: #333333;
+    border-color: #6a0dad;
+    border-style: solid;
+    padding: 2rem;
+    border-radius: 50rem;
+}
+
+.memory-users-choice {
+    text-align: center;
+}
+
+.users-choices {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.form-list li {
+    margin-bottom: 10px;
+}
+
+.memory-users-choice label {
+    color: #333333;
+    font-weight: bolder;
+    margin-right: 10px;
+}
+
+.memory-users-choice input[type="number"] {
+    width: 150px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.memory-users-choice button {
+    background-color: #6a0dad;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.memory-users-choice button:hover {
+    background-color: #7b1fa2;
+    color: #ffd700;
+}

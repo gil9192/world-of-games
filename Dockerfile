@@ -1,19 +1,12 @@
-FROM python:3.12-slim
+FROM python:3.9.19-bookworm
 
-LABEL "app"="wog1312"
-LABEL "role"="scoreserver"
+WORKDIR /app
+
+COPY entrypoint.sh /usr/local/bin/
+COPY . /app/
+
+RUN pip install --no-cache-dir -r requirements.txt
 
 EXPOSE 8777
 
-ENV PYTHONDONTWRITEBYTECODE=1
-
-ENV PYTHONUNBUFFERED=1
-
-WORKDIR /app
-RUN mkdir aux/ 
-COPY web/* /app/
-COPY aux/* /app/aux/
-
-RUN python -m pip install -r web-requirements.txt
-
-CMD ["python", "scoreserver.py"]
+ENTRYPOINT ["entrypoint.sh"]

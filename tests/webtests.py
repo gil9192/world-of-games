@@ -27,15 +27,14 @@ def test_registration(url: str) -> bool:
         registratrion_username = driver.find_element(By.XPATH, value='//*[@id="register_username"]')
         registratrion_password = driver.find_element(By.XPATH, value='//*[@id="register_password"]')
         registratrion_verification = driver.find_element(By.XPATH, value='//*[@id="verification_password"]')
-        registratrion_username.send_keys("gil9192")
-        registratrion_password.send_keys("T3st12345")
-        registratrion_verification.send_keys("T3st12345")
+        registratrion_username.send_keys("testuser")
+        registratrion_password.send_keys("Test12345")
+        registratrion_verification.send_keys("Test12345")
         register = driver.find_element(By.XPATH, value='/html/body/div/form/button')
         register.click()
         try:
             response = driver.find_element(By.XPATH, value='/html/body/div/h3')
-            sleep(2)
-            if response.text == "User Already Exists...":
+            if response.text == "User Already Exists..." or response.text == "Passwords Don't Match.":
                 return False
         except:
             pass
@@ -43,6 +42,7 @@ def test_registration(url: str) -> bool:
     except Exception as error:
         print(f"Failed - Couldn't get desigered resource:\n{str(error)}")
         return False
+
 
 def test_login(url: str) -> bool:
     try:
@@ -53,6 +53,26 @@ def test_login(url: str) -> bool:
     except Exception as error:
         print(f"Failed - Couldn't setup selenium webdriver:\n{str(error)}")
         return False
+    
+    try:
+        games_element = driver.find_element(By.XPATH, value='/html/body/nav/ul/li[2]/a')
+        games_element.click()
+        login_username = driver.find_element(By.XPATH, value='//*[@id="login_username"]')
+        login_password = driver.find_element(By.XPATH, value='//*[@id="login_password"]')
+        login_button = driver.find_element(By.XPATH, value='/html/body/div/form/button')
+        login_username.send_keys("testuser")
+        login_password.send_keys("Test12345")
+        login_button.click()
+        try:
+            response = driver.find_element(By.XPATH, value='/html/body/div/h3')
+            if response.text == "Invalid Credentials!":
+                return False
+        except:
+            pass
+        return True
+    except Exception as error:
+        print(f"Failed - Couldn't get desigered resource:\n{str(error)}")
+        return False
 
 
 def main_function():
@@ -61,8 +81,10 @@ def main_function():
     """
     print("~" * 80 + "\n" + "Running e2e tests\n" + "~" * 80)
     try:
+        assert test_login("http://localhost:8777") == False                     # Unregisterd user should not login
         assert test_registration("http://localhost:8777") == True
-        assert test_registration("http://localhost:8777") == False              # Two users with same username
+        assert test_registration("http://localhost:8777") == False              # Two users with same username should not be registered.
+        assert test_login("http://localhost:8777") == True
     except AssertionError:
         print("~" * 80 + "\n" + "Some tests failed ...\n" + "~" * 80)
         exit(-1)

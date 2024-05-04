@@ -6,6 +6,7 @@ on: [push]
 
 env:
   DOCKER_IMAGE_NAME: world-of-games1312
+  VERSION: "2.0.5"
 
 jobs:
   Build-and-Test-World-of-Games1312:
@@ -34,5 +35,8 @@ jobs:
       - name: "Deploy Docker Image to dockerhub.com"
         run: |
           docker login -u ${{ secrets.DOCKERHUB_USER }} -p ${{ secrets.DOCKERHUB_TOKEN }}
-          docker tag ${DOCKER_IMAGE_NAME} ${{ secrets.DOCKERHUB_USER }}/${DOCKER_IMAGE_NAME}
-          docker push ${{ secrets.DOCKERHUB_USER }}/${DOCKER_IMAGE_NAME}
+          docker tag ${DOCKER_IMAGE_NAME} ${{ secrets.DOCKERHUB_USER }}/${DOCKER_IMAGE_NAME}:${VERSION}
+          docker tag ${DOCKER_IMAGE_NAME} ${{ secrets.DOCKERHUB_USER }}/${DOCKER_IMAGE_NAME}:latest
+          docker push ${{ secrets.DOCKERHUB_USER }}/${DOCKER_IMAGE_NAME}:${VERSION}
+          docker push ${{ secrets.DOCKERHUB_USER }}/${DOCKER_IMAGE_NAME}:latest
+          

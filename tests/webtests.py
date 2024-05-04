@@ -5,6 +5,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium import webdriver
+from time import sleep
 
 
 def test_registration(url: str) -> bool:
@@ -21,18 +22,19 @@ def test_registration(url: str) -> bool:
         driver.get(url)
         games_element = driver.find_element(By.XPATH, value='/html/body/nav/ul/li[2]/a')
         games_element.click()
-        registratrion_url = driver.find_elemnt(By.XPATH, value='/html/body/div/a')
+        registratrion_url = driver.find_element(By.XPATH, value='/html/body/div/a')
         registratrion_url.click()
-        registratrion_username = driver.find_elemnt(By.XPATH, value='//*[@id="register_username"]')
-        registratrion_password = driver.find_elemnt(By.XPATH, value='//*[@id="register_password"]')
-        registratrion_verification = driver.find_elemnt(By.XPATH, value='//*[@id="verification_password"]')
+        registratrion_username = driver.find_element(By.XPATH, value='//*[@id="register_username"]')
+        registratrion_password = driver.find_element(By.XPATH, value='//*[@id="register_password"]')
+        registratrion_verification = driver.find_element(By.XPATH, value='//*[@id="verification_password"]')
         registratrion_username.send_keys("gil9192")
         registratrion_password.send_keys("T3st12345")
         registratrion_verification.send_keys("T3st12345")
-        register = driver.find_elemnt(By.XPATH, value='/html/body/div/form/button')
+        register = driver.find_element(By.XPATH, value='/html/body/div/form/button')
         register.click()
         try:
-            response = driver.find_elemnt(By.XPATH, value='/html/body/div/h3')
+            response = driver.find_element(By.XPATH, value='/html/body/div/h3')
+            sleep(2)
             if response.text == "User Already Exists...":
                 return False
         except:
@@ -57,11 +59,10 @@ def main_function():
     """
     Run the end 2 end test bench and exit wit apropriate return code.
     """
-
     print("~" * 80 + "\n" + "Running e2e tests\n" + "~" * 80)
     try:
-        assert test_registration("http://localhost:8777") == False
-        assert test_registration("http://localhost:8777") == True               # Two users with same username
+        assert test_registration("http://localhost:8777") == True
+        assert test_registration("http://localhost:8777") == False              # Two users with same username
     except AssertionError:
         print("~" * 80 + "\n" + "Some tests failed ...\n" + "~" * 80)
         exit(-1)

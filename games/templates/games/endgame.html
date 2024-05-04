@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+{{ game_status }}
+{% endblock title %}
+
+{% block css_file %}
+<link rel="stylesheet" href="{% static "games/endgame.css" %}">
+{% endblock css_file %}
+
+{% block content %}
+<div class="round">
+    {% if game_status == "win" %}
+    <div class="win">
+        <h1>You Won This Round!</h1>
+    </div>
+    {% else %}
+    <div class="loose">
+        <h1>You've Lost This Round...</h1>
+    </div>
+    {% endif %}
+    <div class="replay">
+        {% if game_name == "guess_game" %}
+        <a class="roundend-link" href="{% url "guess" %}">Replay</a>
+        <a class="roundend-link" href="{% url "games" %}">Back to Games</a>
+        {% elif game_name == "memory_game" %}
+        <a class="roundend-link" href="{% url "memory" %}">Replay</a>
+        <a class="roundend-link" href="{% url "games" %}">Back to Games</a>
+        {% elif game_name == "roulette_game" %}
+        <a class="roundend-link" href="{% url "roulette" %}">Replay</a>
+        <a class="roundend-link" href="{% url "games" %}">Back to Games</a>
+        {% else %}
+        <a class="roundend-link" href="{% url "games" %}">Back to Games</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}
+
+{% block js_file %}
+<script src="{% static "games/js/endgame.js" %}"></script>
+{% endblock js_file %}

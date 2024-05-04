@@ -1,0 +1,46 @@
+/* Navigation bar style */
+.navbar {
+    background-color: #6a0dad;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+  }
+  
+  .navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  .navbar-nav {
+    list-style: none;
+    display: flex;
+  }
+  
+  .navbar-nav li {
+    margin-right: 50px;
+    margin-left: 50px;
+  }
+  
+  .navbar-nav li.login {
+    margin-right: auto;
+    margin-left: 20rem;
+  }
+  
+  .navbar-nav li a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-nav li a:hover {
+    color: #ffd700;
+  }
+  
+  .navbar-brand:hover {
+    color: #ffd700;
+  }
+  

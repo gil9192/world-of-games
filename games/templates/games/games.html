@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Games
+{% endblock title %}
+
+{% block css_file %}
+<link rel="stylesheet" href="{% static "games/games.css" %}">
+{% endblock css_file %}
+
+
+{% block content %}
+<div class="games">
+    <div class="select-difficulty">
+        <h1>Choose Game Difficulty:</h1>
+        <form action="/games/" method="POST">
+            {% csrf_token %}
+            {% for level in levels.values  %}
+            {% if forloop.counter == 3 %}
+            <input id="{{ level.name }}" type="radio" name="difficulty" value="{{ level.value }}" checked>
+            {% else %}
+            <input id="{{ level.name }}" type="radio" name="difficulty" value="{{ level.value }}">
+            {% endif %}
+            <label for="{{ level.name }}">{{ level.name|title }}({{ level.value }})</label>
+
+            {% endfor %}
+            <button>Choose</button>
+        </form>
+        
+    </div>
+    <div class="select-game">
+        <h1>Choose a Game to Play:</h1>
+        <h3>Current Difficulty Level: {{ dif_choice.name|title }}</h3>
+        <ul>
+            <li>
+                <div class="game-div">
+                    <a href="{% url "guess" %}">
+                        <h2>Guess Game</h2>
+                        <img src="{% static "games/images/guess-game.jpeg" %}" alt="guess game banner">
+                    </a>
+                    <p>
+                        Guess Game starts by picking a secret number randomly<br>
+                        between 0 and the "difficulty".<br>
+                        Then, you have to guess what that secret number<br> 
+                        by typing in your guess!
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="game-div"> 
+                    <a href="{% url "memory" %}">
+                        <h2>Memory Game</h2>
+                        <img src="{% static "games/images/memory-game.jpeg" %}" alt="memory game banner">
+                    </a>
+                    <p>
+                        The Memory Game is all about testing how good your memory is!<br>
+                        First, it shows you a bunch of random numbers really quickly, like whoosh!<br>
+                        Then, it's your turn to try and remember what those numbers.<br>
+                        Can you remember them all? Let's find out!
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="game-div">
+                    <a href="{% url "roulette" %}">
+                        <h2>Currency Roulette Game</h2>
+                        <img src="{% static "games/images/currency-roulette.jpeg" %}" alt="currency roulette game banner">
+                    </a>
+                    <p>
+                        Currency Roulette Game! It uses a special magic to find out how much one U.S.<br>
+                        dollar is worth in Israeli Shekels (ILS).<br>
+                        Then, it picks a secret number between 1 and 100, and you gotta guess<br>
+                        how much that is in U.S. dollars converted to Israeli Shekels!<br>
+                        How close you get depends on how hard you want the game to be!
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock content %}

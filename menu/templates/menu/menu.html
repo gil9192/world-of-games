@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+World of Games 1312
+{% endblock title %}
+
+{% block css_file %}
+<link rel="stylesheet" href="{% static "menu/menu.css" %}">
+{% endblock css_file %}
+
+
+{% block content %}
+<div class="menu">
+    <div class="wog-banner">
+        <img src="{% static "images/wog-banner.gif" %}" alt="World of Games 1312 banner">
+        <h2>
+            A collection of mini-Python games! They've been made to give loads of fun!<br>
+            Jump right in and enjoy all the different games<br>
+            waiting for you in the World of Games!<br>
+        </h2>
+    </div>
+</div>
+{% endblock content %}
+

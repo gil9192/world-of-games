@@ -1,0 +1,30 @@
+.menu {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* three equal columns */
+  grid-template-rows: auto;           /* automatic row sizing */
+}
+
+.wog-banner {
+  grid-column: 1 / 4;                 /* span from column 1 to column 3 */
+  grid-row: 1;                        /* place in the first row */
+  padding: 1rem;
+  border: 5rem;
+  margin-left: 5rem;
+  margin-right: 5rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  border-radius: 1rem;
+  text-align: center;
+  text-shadow: 2px 2px 4px #00000052;
+  padding: 1rem;
+  text-align: center;
+}
+
+.wog-banner img {
+  display: block;
+  margin: 0 auto 3rem;
+  max-width: 65%; /* Make sure the banner image fits within its container */
+  max-height: 65%; /* Make sure the banner image fits within its container */
+  border-radius: 2rem;
+  box-shadow: 0 0 1rem rgba(95, 57, 131, 0.562)
+}

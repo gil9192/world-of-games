@@ -1,0 +1,42 @@
+name: World of Games 1312 CI/CD workflow
+
+run-name: ${{ github.actor }} started World of Games 1312 CI/CD workflow 🚀
+
+on: [push]
+
+env:
+  DOCKER_IMAGE_NAME: world-of-games1312
+  VERSION: "2.0.5"
+
+jobs:
+  Build-and-Test-World-of-Games1312:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Check out repository code"
+        uses: actions/checkout@v4
+
+      - name: "Build App images and run on port 8777"
+        run: |
+          ls ${{ github.workspace }}
+          docker-compose build
+          docker compose up -d
+
+      - name: "Setup Testing Environment"
+        run: |
+          python3 -m venv .venv
+          source .venv/bin/activate
+          pip install -r tests/requirements.txt
+      
+      - name: "Run Selenium Webtests"
+        run: |
+          source .venv/bin/activate
+          python3 tests/webtests.py
+
+      - name: "Deploy Docker Image to dockerhub.com"
+        run: |
+          docker login -u ${{ secrets.DOCKERHUB_USER }} -p ${{ secrets.DOCKERHUB_TOKEN }}
+          docker tag ${DOCKER_IMAGE_NAME} ${{ secrets.DOCKERHUB_USER }}/${DOCKER_IMAGE_NAME}:${VERSION}
+          docker tag ${DOCKER_IMAGE_NAME} ${{ secrets.DOCKERHUB_USER }}/${DOCKER_IMAGE_NAME}:latest
+          docker push ${{ secrets.DOCKERHUB_USER }}/${DOCKER_IMAGE_NAME}:${VERSION}
+          docker push ${{ secrets.DOCKERHUB_USER }}/${DOCKER_IMAGE_NAME}:latest
+          

@@ -1,0 +1,117 @@
+.select-game {
+    margin: 2rem auto;
+    max-width: 100%;
+    max-height: 100%;
+    text-align: center;
+}
+
+.select-game h1 {
+    color: #6a0dad;
+}
+
+.select-game h3 {
+    color: #6a0dad;
+}
+
+.select-game ul {
+    list-style-type: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+    justify-items: center;
+}
+
+.select-game li {
+    margin: 0;
+}
+
+.game-div {
+    background-color: #ffffff;
+    border-radius: 50rem;
+    box-shadow: 0 0 1rem rgba(95, 57, 131, 0.562);
+    padding: 1rem;
+    margin: 3rem;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.game-div:hover {
+    background-color: #eeeeee;
+    border-radius: 2rem;
+    box-shadow: 0 0 1rem rgba(155, 81, 224, 0.562);
+}
+
+.game-div a {
+    text-decoration: none;
+    color: #333333;
+}
+
+.game-div a img {
+    display: block;
+    margin: 0 auto 2rem;  /* Adjust margin to provide spacing below the images */
+    max-width: 50%;       /* Make sure the images fit within their containers */
+    border-radius: 40rem;
+    transition: 0.3s;
+}
+
+.game-div h2 {
+    color: #6a0dad;
+}
+
+.game-div p {
+    color: #ffffff00;
+    transition: 1s;
+}
+
+.game-div:hover p {
+    color: #000000;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px #00000052;
+}
+
+.select-difficulty {
+    margin: 20px auto;
+    max-width: 100%;
+    max-height: 20%;
+    text-align: center;
+}
+
+.select-difficulty h1 {
+    color: #6a0dad;
+}
+
+.select-difficulty form {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.select-difficulty label {
+    color: #333333;
+    font-weight: bolder;
+    margin-right: 10px;
+}
+
+.select-difficulty .radio-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.select-difficulty button {
+    background-color: #6a0dad;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+
+}
+
+.select-difficulty button:hover {
+    background-color: #7b1fa2;
+    color: #ffd700;
+}

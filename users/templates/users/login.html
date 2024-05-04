@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+User Login
+{% endblock title %}
+
+
+{% block css_file %}
+<link rel="stylesheet" href="{% static "users/users.css" %}">
+{% endblock css_file %}
+
+{% block content %}
+<div class="login-container">
+    <h1>User Login:</h1>
+    <form action="/users/login/" method="POST">
+        {% csrf_token %}
+        <label for="login_username">Username:</label>
+        <input id="login_username" type="text" name="username">
+        
+        <label for="login_password">Password:</label>
+        <input id="login_password" type="password" name="password">
+        
+        <button>Login</button>
+    </form>
+    {% if msg != "None" %}
+    <h3 class="bad-msg">{{ msg }}</h3>
+    {% endif %} 
+    <a class="register-link" href="{% url "register" %}">Register</a>
+</div>
+
+{% endblock content %}

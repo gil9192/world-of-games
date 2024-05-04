@@ -1,0 +1,50 @@
+.score-container {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 600px;
+    background-color: #eeeeee;
+    border-radius: 8px;
+    box-shadow: 0 0 1rem rgba(95, 57, 131, 0.562)
+}
+
+.score-container h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.score-table {
+    list-style: none;
+    padding: 0;
+}
+
+.player-score {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+}
+
+.player-score:first-child { 
+    color: #ffa600
+}
+
+.item-number {
+    width: 30px; /* Adjust as needed */
+    text-align: center;
+}
+
+.username {
+    font-weight: bold;
+}
+
+.score {
+    color: #007bff;
+    font-weight: bold;
+}
+
+.item-number {
+    color: #000000;
+    font-weight: bold;
+}

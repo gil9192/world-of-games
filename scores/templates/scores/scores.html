@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Scores
+{% endblock title %}
+
+
+{% block css_file %}
+<link rel="stylesheet" href="{% static "scores/scores.css" %}">
+{% endblock css_file %}
+
+{% block content %}
+<div class="score-container">
+    <h1>Player Scores:</h1>
+    <ul class="score-table">
+        {% for user in users  %}
+        <li class="player-score">
+            <span class="item-number">{{ forloop.counter }}</span>
+            <span class="username">{{ user.username }}</span>
+            <span class="score">{{ user.score }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock content %}

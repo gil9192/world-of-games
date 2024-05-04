@@ -55,6 +55,7 @@ def test_login(url: str) -> bool:
         return False
     
     try:
+        driver.get(url)
         games_element = driver.find_element(By.XPATH, value='/html/body/nav/ul/li[2]/a')
         games_element.click()
         login_username = driver.find_element(By.XPATH, value='//*[@id="login_username"]')
